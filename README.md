@@ -1,4 +1,5 @@
 # Todo_Controll
+- An app that allows users to freely manage their own notes.
 
 # 2021_08_12 
 
