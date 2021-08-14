@@ -3,14 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/psych/AndroidStudioProjects/Todo_1/app/src/main/res/drawable-v24/background_note_color_2.xml" value="0.2354515050167224" />
+        <entry key="..\:/Users/psych/AndroidStudioProjects/Todo_1/app/src/main/res/drawable-v24/background_note_color_3.xml" value="0.2354515050167224" />
+        <entry key="..\:/Users/psych/AndroidStudioProjects/Todo_1/app/src/main/res/drawable-v24/background_note_color_4.xml" value="0.2354515050167224" />
+        <entry key="..\:/Users/psych/AndroidStudioProjects/Todo_1/app/src/main/res/drawable-v24/background_note_color_5.xml" value="0.2354515050167224" />
         <entry key="..\:/Users/psych/AndroidStudioProjects/Todo_1/app/src/main/res/drawable/background_add_btn.xml" value="0.2454849498327759" />
         <entry key="..\:/Users/psych/AndroidStudioProjects/Todo_1/app/src/main/res/drawable/background_done_btn.xml" value="0.2454849498327759" />
+        <entry key="..\:/Users/psych/AndroidStudioProjects/Todo_1/app/src/main/res/drawable/background_miscellaneous.xml" value="0.2354515050167224" />
         <entry key="..\:/Users/psych/AndroidStudioProjects/Todo_1/app/src/main/res/drawable/background_note.xml" value="0.2354515050167224" />
+        <entry key="..\:/Users/psych/AndroidStudioProjects/Todo_1/app/src/main/res/drawable/background_note_color_1.xml" value="0.2354515050167224" />
         <entry key="..\:/Users/psych/AndroidStudioProjects/Todo_1/app/src/main/res/drawable/background_search.xml" value="0.2454849498327759" />
         <entry key="..\:/Users/psych/AndroidStudioProjects/Todo_1/app/src/main/res/drawable/background_subtitle_indicator.xml" value="0.2454849498327759" />
         <entry key="..\:/Users/psych/AndroidStudioProjects/Todo_1/app/src/main/res/layout/activity_create_note.xml" value="0.2375" />
         <entry key="..\:/Users/psych/AndroidStudioProjects/Todo_1/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/psych/AndroidStudioProjects/Todo_1/app/src/main/res/layout/item_container_note.xml" value="0.22736486486486487" />
+        <entry key="..\:/Users/psych/AndroidStudioProjects/Todo_1/app/src/main/res/layout/layout_miscellaneous.xml" value="0.22736486486486487" />
       </map>
     </option>
   </component>
