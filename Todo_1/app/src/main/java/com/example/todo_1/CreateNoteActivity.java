@@ -103,6 +103,24 @@ public class CreateNoteActivity extends AppCompatActivity {
             setViewOrUpdateNote();
         }
 
+        findViewById(R.id.imgRemoveWebURL).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textWebURL.setText(null);
+                layoutWebURL.setVisibility(View.GONE);
+            }
+        });
+
+        findViewById(R.id.imgRemove).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageNote.setImageBitmap(null);
+                imageNote.setVisibility(View.GONE);
+                findViewById(R.id.imgRemove).setVisibility(View.GONE);
+                selectedFilePath = "";
+            }
+        });
+
         initMiscellaneous();
         setSubtitleIndicatorColor();
     }
@@ -116,6 +134,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         if(alreadyAvailableNote.getImagePath() != null && !alreadyAvailableNote.getImagePath().trim().isEmpty()) {
             imageNote.setImageBitmap(BitmapFactory.decodeFile(alreadyAvailableNote.getImagePath()));
             imageNote.setVisibility(View.VISIBLE);
+            findViewById(R.id.imgRemove).setVisibility(View.VISIBLE);
             selectedFilePath = alreadyAvailableNote.getImagePath();
         }
 
@@ -337,6 +356,7 @@ public class CreateNoteActivity extends AppCompatActivity {
                         Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                         imageNote.setImageBitmap(bitmap);
                         imageNote.setVisibility(View.VISIBLE);
+                        findViewById(R.id.imgRemove).setVisibility(View.VISIBLE);
 
                         selectedFilePath = getPathFromUri(selectedImageUri);
                     } catch (Exception exception) {
