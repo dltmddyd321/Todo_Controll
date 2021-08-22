@@ -12,3 +12,7 @@
 # 2021_08_15
 ![2021_08_15_1](https://user-images.githubusercontent.com/73208493/129468982-0859587b-f83b-4916-8dfb-51e669507afa.PNG)
 ![2021_08_15_2](https://user-images.githubusercontent.com/73208493/129468983-32c9163b-1615-4c00-b315-e0d88ee9061d.PNG)
+
+# 2021_08_21
+![2021_08_21](https://user-images.githubusercontent.com/73208493/130315261-1287e68f-9cda-4aff-9331-318e3065d757.PNG)
+
