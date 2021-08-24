@@ -10,6 +10,7 @@ import com.example.todo_1.entities.Note;
 
 import java.util.List;
 
+//DB를 위한 Dao 클래스 선언
 @Dao
 public interface NoteDao {
 
@@ -18,6 +19,7 @@ public interface NoteDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertNote(Note note);
+    //이전 데이터를 새로운 데이터 값으로 갱신 Insert
 
     @Delete
     void deleteNote(Note note);

@@ -40,16 +40,27 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NoteListener {
 
+    //메모 추가에 대한 코드 값
     public static final int REQUEST_CODE_ADD_NOTE = 1;
+
+    //메모 갱신에 대한 코드 값
     public static final int REQUEST_CODE_UPDATE_NOTE = 2;
+
+    //노트 시각화에 대한 코드 값
     public static final int REQUEST_CODE_SHOW_NOTES = 3;
+
+    //이미지 선택 및 호출에 대한 코드 값
     public static final int REQUEST_CODE_SELECT_IMAGE = 4;
+
+    //저장소 권한에 대한 코다ㅡ 값
     public static final int REQUEST_CODE_STORAGE_PERMISSION = 5;
 
+    //노트의 목록을 확인할 수 있는 RecyclerView와 그 노트들이 담길 List 선언언
     private RecyclerView notesRecyclerView;
     private List<Note> noteList;
     private NotesAdapter notesAdapter;
 
+    //노트 클릭 시 작용을 위한 변수
     private int noteClickedPosition = -1;
 
     private AlertDialog dialogAddURL;
@@ -63,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements NoteListener {
         imgAddNoteMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //메인화면 하단의 노트 추가 버튼을 누르면 메모 작성 창으로 이동
                 startActivityForResult(
                         new Intent(getApplicationContext(), CreateNoteActivity.class),
                         REQUEST_CODE_ADD_NOTE
@@ -71,29 +83,35 @@ public class MainActivity extends AppCompatActivity implements NoteListener {
         });
         notesRecyclerView = findViewById(R.id.notesRecyclerView);
         notesRecyclerView.setLayoutManager(
+                //RecyclerView의 구조적 형태를 수직적 그리드 레이아웃으로 설정
                 new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         );
 
         noteList = new ArrayList<>();
+
+        //메모 요소들을 화면에 배치시키고 저장하기 위해 Adapter 연결
         notesAdapter = new NotesAdapter(noteList, this);
         notesRecyclerView.setAdapter(notesAdapter);
 
+        //메모 데이터 값을 호출
         getNotes(REQUEST_CODE_SHOW_NOTES, false);
 
         EditText inputSearch = findViewById(R.id.inputSearch);
         inputSearch.addTextChangedListener(new TextWatcher() {
+            //검색창에 값을 입력한다면
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //입력값 s가 변경되면 검색 Timer 취소
                 notesAdapter.cancelTimer();
             }
 
             @Override
             public void afterTextChanged(Editable s) {
+                //메모 데이터가 있다면 입력값 s에 대한 데이터를 검색
                 if(noteList.size() != 0) {
                     notesAdapter.searchNotes(s.toString());
                 }
@@ -103,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements NoteListener {
         findViewById(R.id.imageAddNote).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //메인화면 하단의 작은 노트 추가 버튼을 누르면 메모 작성 창으로 이동
                 startActivityForResult(
                         new Intent(getApplicationContext(), CreateNoteActivity.class),
                         REQUEST_CODE_ADD_NOTE
@@ -113,31 +132,39 @@ public class MainActivity extends AppCompatActivity implements NoteListener {
         findViewById(R.id.imageAddImg).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //메인 하단의 이미지 버튼을 클릭하면
                 if(ContextCompat.checkSelfPermission(
                         getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE
                 ) != PackageManager.PERMISSION_GRANTED) {
+                    //접근 권한 허가에 대한 확인이 되지 않았다면
                     ActivityCompat.requestPermissions(
+                            //저장소 접근 권한에 대한 요청문 발생
                             MainActivity.this,
                             new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},
                             REQUEST_CODE_STORAGE_PERMISSION
                     );
                 } else {
+                    //이미지 선택 함수 실행
                     selectImage();
                 }
             }
         });
 
         findViewById(R.id.imageAddWeb).setOnClickListener(new View.OnClickListener() {
+            //메인 하단의 URL 추가 버튼 클릭하면
             @Override
             public void onClick(View v) {
+                //URL 등록 다이얼로그 팝업
                 showAddURLDialog();
             }
         });
     }
 
     private void selectImage() {
+        //갤러리 저장소를 열어 특정 아이템을 선택 가능
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         if(intent.resolveActivity(getPackageManager()) != null) {
+            //열린 저장소에서 선택한 이미지를 그대로 가져오기
             startActivityForResult(intent, REQUEST_CODE_SELECT_IMAGE);
         }
     }
@@ -147,8 +174,10 @@ public class MainActivity extends AppCompatActivity implements NoteListener {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if(requestCode == REQUEST_CODE_STORAGE_PERMISSION && grantResults.length > 0) {
             if(grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                //접근 권한을 허가 받는다면 이미지 선택 함수 실행
                 selectImage();
             } else {
+                //접근 권한을 불허가 받는다면 거부 메시지 출력
                 Toast.makeText(this,"권한 거부!",Toast.LENGTH_SHORT).show();
             }
         }

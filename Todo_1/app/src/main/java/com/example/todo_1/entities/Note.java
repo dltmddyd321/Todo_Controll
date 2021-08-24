@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
+//메모 DB를 구현하기 위한 데이터 타입들이 선언
 @Entity(tableName = "notes")
 public class Note implements Serializable {
 
