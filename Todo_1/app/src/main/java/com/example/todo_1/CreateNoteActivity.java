@@ -83,6 +83,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         layoutWebURL = findViewById(R.id.layoutWebURL);
 
         textDateTime.setText(
+                //지정한 패턴 형식에 따라 메모 기록 당시의 시간과 날짜를 업데이트
                 new SimpleDateFormat("EEEE, dd MMMM yyyy HH:mm a", Locale.getDefault())
                 .format(new Date())
         );
@@ -115,6 +116,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         findViewById(R.id.imgRemove).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //이미지 삭제 버튼을 누르면 Bitmap data가 null이 되면서 이미지 삭제
                 imageNote.setImageBitmap(null);
                 imageNote.setVisibility(View.GONE);
                 findViewById(R.id.imgRemove).setVisibility(View.GONE);
@@ -142,12 +144,15 @@ public class CreateNoteActivity extends AppCompatActivity {
     }
 
     private void setViewOrUpdateNote() {
+
+        //존재하는 메모의 데이터(제목, 부제목, 내용, 시간)를 호출
         inputNoteTitle.setText(alreadyAvailableNote.getTitle());
         inputNotesSubtitle.setText(alreadyAvailableNote.getSubtitle());
         inputNoteText.setText(alreadyAvailableNote.getNoteText());
         textDateTime.setText(alreadyAvailableNote.getDateTime());
 
         if(alreadyAvailableNote.getImagePath() != null && !alreadyAvailableNote.getImagePath().trim().isEmpty()) {
+            //만일 이미지 데이터가 존재한다면 등록된 이미지 path에 맞는 이미지를 화면에 호출
             imageNote.setImageBitmap(BitmapFactory.decodeFile(alreadyAvailableNote.getImagePath()));
             imageNote.setVisibility(View.VISIBLE);
             findViewById(R.id.imgRemove).setVisibility(View.VISIBLE);
@@ -155,6 +160,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         }
 
         if(alreadyAvailableNote.getWeblink() != null && !alreadyAvailableNote.getWeblink().trim().isEmpty()) {
+            //만일 URL 데이터가 존재한다면 등록된 URL Link를 화면에 호출
             textWebURL.setText(alreadyAvailableNote.getWeblink());
             layoutWebURL.setVisibility(View.VISIBLE);
         }
